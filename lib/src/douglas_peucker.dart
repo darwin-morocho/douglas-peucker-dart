@@ -7,11 +7,9 @@ class Point {
   Point(this.x, this.y);
 }
 
-
 class DouglasPeucker {
-
   /// polyline simplification  it uses a combination of Douglas-Peucker and Radial Distance algorithms.
-  /// 
+  ///
   /// [points] List<Point>
   /// [tolerance] double tolerance
   /// [highestQuality] bool
@@ -122,8 +120,8 @@ class DouglasPeucker {
           newPoints.add(points[i]);
         }
       }
-
-      return newPoints;
     }
+
+    return newPoints;
   }
 }
