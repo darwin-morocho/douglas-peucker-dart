@@ -91,7 +91,7 @@ class DouglasPeucker {
     markers[first] = markers[last] = 1;
     var index = 0;
 
-    while (last != null) {
+    while (true) {
       double maxSqDist = 0;
       for (var i = first + 1; i < last; i++) {
         var sqDist =
@@ -101,24 +101,28 @@ class DouglasPeucker {
           index = i;
           maxSqDist = sqDist;
         }
-
-        if (maxSqDist > sqTolerance) {
-          markers[index] = 1;
-
-          firstStack.add(first);
-          lastStack.add(index);
-          firstStack.add(index);
-          lastStack.add(last);
-        }
-
-        first = firstStack.removeLast();
-        last = lastStack.removeLast();
       }
 
-      for (var i = 0; i < len; i++) {
-        if (markers[i] != null) {
-          newPoints.add(points[i]);
-        }
+      if (maxSqDist > sqTolerance) {
+        markers[index] = 1;
+
+        firstStack.add(first);
+        lastStack.add(index);
+        firstStack.add(index);
+        lastStack.add(last);
+      }
+
+      if (firstStack.length == 0 || lastStack.length == 0) {
+        break;
+      }
+
+      first = firstStack.removeLast();
+      last = lastStack.removeLast();
+    }
+
+    for (var i = 0; i < len; i++) {
+      if (markers[i] != null) {
+        newPoints.add(points[i]);
       }
     }
 
