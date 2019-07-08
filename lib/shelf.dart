@@ -1,0 +1,1 @@
+export 'src/douglas_peucker.dart';

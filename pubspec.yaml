@@ -1,0 +1,8 @@
+name: douglas_peucker
+description: >
+  polyline simplification  it uses a combination of Douglas-Peucker and Radial Distance algorithms.
+  Polyline simplification dramatically reduces the number of points in a polyline while retaining its shape, giving a huge performance boost when processing it and also reducing visual noise. For example, it's essential when rendering a 70k-points line chart or a map route in the browser using Canvas or SVG.
+version: 0.1.0
+author: Darwin Morocho <darwin.morocho@icloud.com>
+environment:
+  sdk: ">=2.1.0 <3.0.0"
