@@ -81,7 +81,7 @@ class DouglasPeucker {
   static List<Point> simplifyDouglasPeucker(
       List<Point> points, double sqTolerance) {
     final len = points.length;
-    var markers = List<int>.filled(len, 0, growable: true);
+    var markers = List<int>.filled(len, null, growable: true);
     var first = 0;
     var last = len - 1;
     var firstStack = List<int>();
