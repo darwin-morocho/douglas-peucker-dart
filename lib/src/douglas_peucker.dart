@@ -19,7 +19,7 @@ class DouglasPeucker {
       return points;
     }
 
-    final sqTolerance = pow(tolerance, 2);
+    final double sqTolerance = pow(tolerance, 2).toDouble();
 
     if (!highestQuality) {
       points = simplifyRadialDistance(points, sqTolerance);
@@ -33,9 +33,9 @@ class DouglasPeucker {
   static List<Point> simplifyRadialDistance(
       List<Point> points, double sqTolerance) {
     var prevPoint = points[0];
-    var newPoints = List<Point>();
+    List<Point> newPoints = [];
     newPoints.add(prevPoint);
-    Point point = null;
+    Point? point;
 
     for (Point iPoint in points) {
       point = iPoint;
@@ -45,8 +45,8 @@ class DouglasPeucker {
       }
     }
 
-    if (prevPoint.x != point.x && prevPoint.y != point.y) {
-      newPoints.add(point);
+    if (prevPoint.x != point?.x && prevPoint.y != point?.y) {
+      newPoints.add(point!);
     }
 
     return newPoints;
@@ -81,12 +81,12 @@ class DouglasPeucker {
   static List<Point> simplifyDouglasPeucker(
       List<Point> points, double sqTolerance) {
     final len = points.length;
-    var markers = List<int>.filled(len, null, growable: true);
+    var markers = List<int?>.filled(len, null, growable: true);
     var first = 0;
     var last = len - 1;
-    var firstStack = List<int>();
-    var lastStack = List<int>();
-    var newPoints = List<Point>();
+    List<int> firstStack = [];
+    List<int> lastStack = [];
+    List<Point> newPoints = [];
 
     markers[first] = markers[last] = 1;
     var index = 0;
